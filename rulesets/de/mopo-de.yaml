@@ -1,0 +1,24 @@
+- domain: mopo.de
+  googleCache: true
+  injections:
+    - position: head
+      append: |
+        <script>
+          var removeAll = function(selector) {
+            document.querySelectorAll(selector).forEach(function(el) { el.remove() })
+          }
+
+          document.addEventListener("DOMContentLoaded", () => {
+            // Remove giant MOPO+ ad/preview
+            removeAll(".elementor-element-f1c4202, .paywall-fade")
+
+            // Remove newsletter promo box
+            removeAll(".nlbox")
+
+            // Remove expanded sub menus
+            removeAll("section.elementor-element-4933ef0")
+
+            // Show hidden article
+            document.querySelector(".paywall-article").style.display = "block"
+          })
+        </script>
